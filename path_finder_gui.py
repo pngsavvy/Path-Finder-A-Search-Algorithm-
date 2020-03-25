@@ -4,8 +4,8 @@ from math import sqrt
 class Gui:
     pygame.init()
 
-    board_scale = 50   # the bigger the number the bigger each node will be
-    number_of_columns, number_of_rows = 12, 8
+    board_scale = 15   # the bigger the number the bigger each node will be
+    number_of_columns, number_of_rows = 30, 20
     width = int(number_of_columns * board_scale)
     height = int(number_of_rows * board_scale)
 
@@ -143,18 +143,6 @@ class Gui:
             if node[self.is_open_i] == True:
                 pygame.draw.rect(self.gameDisplay, self.green ,(node[self.left_i], node[self.top_i], node[self.right_i] - node[self.left_i], node[self.bottom_i] - node[self.top_i]))
                 
-                # render g_cost
-                text = self.font.render(str(node[self.g_cost_i]), True, self.black)
-                self.gameDisplay.blit(text, (int(node[self.left_i]) , int(node[self.top_i])))
-
-                # render h_cost
-                text = self.font.render(str(node[self.h_cost_i]), True, self.black)
-                self.gameDisplay.blit(text, (int(node[self.left_i] + self.board_scale / 2) , int(node[self.top_i])))
-
-                # render f_cost
-                text = self.larger_font.render(str(node[self.f_cost_i]), True, self.black)
-                self.gameDisplay.blit(text, (int(node[self.left_i] + self.board_scale / 3), int(node[self.top_i]) + self.board_scale / 2))
-
             # if node is closed
             if node[self.is_closed_i]:
                 pygame.draw.rect(self.gameDisplay, self.gray ,(node[self.left_i], node[self.top_i], node[self.right_i] - node[self.left_i], node[self.bottom_i] - node[self.top_i]))
